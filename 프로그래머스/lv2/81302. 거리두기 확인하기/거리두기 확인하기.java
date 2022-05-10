@@ -1,7 +1,4 @@
 class Solution {
-
-    //    대기실은 5개이며, 각 대기실은 5x5 크기입니다.
-    char[][] waitingRoom = new char[5][5];
     // 상하좌우
     int[] dx = {-1, 1, 0, 0};
     int[] dy = {0, 0, -1, 1};
@@ -15,13 +12,10 @@ class Solution {
     //응시자들의 정보와 대기실 구조를 대기실별로 담은 2차원 문자열 배열 places
     public int[] solution(String[][] places) {
         int[] answer = {1, 1, 1, 1, 1};
-        //5*5 places 한 행 당 한 대기실
-        // |r1 - r2| + |c1 - c2| 입니다.
         for (int i = 0; i < 5; i++) { // i번째 방
             for (int j = 0; j < 5; j++) { // j행
                 boolean flag = true;
                 for (int k = 0; k < 5; k++) { // k 열
-                    waitingRoom[j][k] = places[i][j].charAt(k);
                     if (places[i][j].charAt(k) == 'P') {
                         if (!checkDistance(places[i], j, k)) { // 틀렸으면
                             answer[i] = 0;
@@ -40,6 +34,7 @@ class Solution {
 
     public boolean checkDistance(String[] places, int x, int y) {
         int nx, ny;
+        // 상하좌우
         for (int i = 0; i < 4; i++) {
             nx = x + dx[i];
             ny = y + dy[i];
