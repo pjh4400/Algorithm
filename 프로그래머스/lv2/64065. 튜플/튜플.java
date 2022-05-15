@@ -26,9 +26,6 @@ class Solution {
         answer = new int[maxCount];
         Set<Integer> answerSet = new HashSet<>();
         for (int i = 0; i < maxCount; i++) {
-            if (tuples[i].isEmpty()) {
-                continue;
-            }
             tuples[i].removeAll(answerSet);
             answer[i] = tuples[i].iterator().next();
             answerSet.add(answer[i]);
